@@ -1,0 +1,1 @@
+Given a string message, your task is to shift each vowel to the position of the next vowel in the string. The last vowel should be shifted to the position of the first vowel of the string. For message = "codesignal", the output should be "cadosegnil".
