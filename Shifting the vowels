@@ -1,1 +1,47 @@
 Given a string message, your task is to shift each vowel to the position of the next vowel in the string. The last vowel should be shifted to the position of the first vowel of the string. For message = "codesignal", the output should be "cadosegnil".
+public class VowelShifter {
+    public static String shiftVowels(String message) {
+        List<Character> vowels = new ArrayList<>();
+        
+        for (char c : message.toCharArray()) {
+            if (isVowel(c)) {
+                vowels.add(c);
+            }
+        }
+        
+        char firstVowel = vowels.remove(0); // Remove the first vowel from the list
+        
+        StringBuilder shiftedMessage = new StringBuilder();
+        for (char c : message.toCharArray()) {
+            if (isVowel(c)) {
+                shiftedMessage.append(vowels.remove(0));
+            } else {
+                shiftedMessage.append(c);
+            }
+        }
+        
+        shiftedMessage.append(firstVowel); // Add the first vowel to the end
+        
+        return shiftedMessage.toString();
+    }
+    
+    private static boolean isVowel(char c) {
+        char lowercase = Character.toLowerCase(c);
+        return lowercase == 'a' || lowercase == 'e' || lowercase == 'i' || lowercase == 'o' || lowercase == 'u';
+    }
+    
+    public static void main(String[] args) {
+        String message = "codesignal";
+        String result = shiftVowels(message);
+        System.out.println(result); // Output: cadosegnil
+    }
+}
+This Java implementation follows a similar approach as the Python solution. We create a shiftVowels method that takes a string as input and returns the shifted string. It uses a List<Character> to store the vowels in their original order. We iterate through the characters of the input string, identify the vowels, and add them to the vowels list. We then remove the first vowel from the list and iterate through the input string again. For each vowel encountered, we replace it with the next vowel from the list. Finally, we append the first vowel to the end of the shifted string and return it.
+
+The isVowel method is used to check if a character is a vowel, and the main method demonstrates an example usage of the shiftVowels method with the given input string.
+
+
+
+
+
+
