@@ -1,0 +1,33 @@
+/* You are given a string s. Consider the following algorithm applied to this string:
+
+Take all the prefixes of the string, and choose the longest palindrome between them.
+If this chosen prefix contains at least two characters, cut this prefix from s and go back to the first step with the updated string. Otherwise, end the algorithm with the current string s as a result.
+Your task is to implement the above algorithm and return its result when applied to string s.
+Note: you can click on the prefixes and palindrome words to see the definition of the terms if you're not familiar with them. 
+Example:
+For s = "aaacodedoc", the output should be solution(s) = "".
+The initial string s = "aaacodedoc" contains only three prefixes which are also palindromes - "a", "aa", "aaa". The longest one between them is "aaa", so we cut it from s.
+Now we have string "codedoc". It contains two prefixes which are also palindromes - "c" and "codedoc". The longest one between them is "codedoc", so we cut it from the current string and obtain the empty string.
+Finally the algorithm ends on the empty string, so the answer is "".*/
+
+public static String solvePrefixPalindrome(String s) {
+
+    int max=0;
+
+    for(int i=2;i<=s.length();i++){
+
+        String s1 = s.substring(0,i);
+        StringBuilder go = new StringBuilder(s1);
+        String s2= String.valueOf(go.reverse());
+
+        if(s2.equals(s1)){
+            if(s2.length()>max)
+                    max= s2.length();
+        }
+    }
+
+    if (max>1)
+         return solvePrefixPalindrome(s.substring(max));
+    else
+        return s.substring(max);
+}
